@@ -1,0 +1,50 @@
+---
+const patterns = [
+  { name: 'Perrito Golden', category: 'Perros', image: '/images/gallery-1.webp' },
+  { name: 'Gatito Siames', category: 'Gatos', image: '/images/gallery-2.webp' },
+  { name: 'Conejito Orejón', category: 'Mascotas Pequeñas', image: '/images/gallery-3.webp' },
+  { name: 'Bulldog Francés', category: 'Perros', image: '/images/gallery-4.webp' },
+  { name: 'Gato Persa', category: 'Gatos', image: '/images/gallery-5.webp' },
+  { name: 'Loro Multicolor', category: 'Aves', image: '/images/gallery-6.webp' },
+];
+---
+
+<section class="py-24 bg-slate-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl md:text-5xl font-display font-extrabold text-slate-900 mb-6">Algunos Diseños Incluidos</h2>
+      <p class="text-lg text-slate-600">Más de 60 patrones de mascotas que podrás tejer desde el primer día. Aquí te mostramos una pequeña selección.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {patterns.map((item) => (
+        <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-slate-100">
+          <div class="relative aspect-square overflow-hidden bg-slate-100">
+            <img 
+              src={item.image} 
+              alt={`Patrón amigurumi de ${item.name}`} 
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
+              onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%20viewBox%3D%220%200%20400%20400%22%3E%3Crect%20fill%3D%22%23f1f5f9%22%20width%3D%22400%22%20height%3D%22400%22%2F%3E%3Ctext%20fill%3D%22%2394a3b8%22%20font-family%3D%22sans-serif%22%20font-size%3D%2220%22%20dy%3D%2210.5%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EImagen%20de%20Patr%C3%B3n%3C%2Ftext%3E%3C%2Fsvg%3E'"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-bold text-primary-600 uppercase tracking-wider mb-2 block">{item.category}</span>
+            <h3 class="text-xl font-bold text-slate-900">{item.name}</h3>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="mt-16 text-center">
+      <a 
+        href="/ebook-patrones-mascotas" 
+        class="inline-flex items-center px-8 py-4 text-lg font-bold text-primary-700 bg-primary-50 rounded-full hover:bg-primary-100 transition-colors"
+      >
+        Ver todos los diseños
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+      </a>
+    </div>
+  </div>
+</section>

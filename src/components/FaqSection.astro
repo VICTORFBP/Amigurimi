@@ -1,0 +1,43 @@
+---
+const faqs = [
+  {
+    question: '¿Necesito experiencia previa?',
+    answer: 'No, nuestros patrones están diseñados para guiarlos paso a paso desde cero. Incluyen fotos detalladas de cada proceso.'
+  },
+  {
+    question: '¿En qué idioma están los patrones?',
+    answer: 'Todos los patrones y bonos están 100% en español, con terminología estándar de crochet fácil de entender.'
+  },
+  {
+    question: '¿Cómo recibo el material?',
+    answer: 'Al realizar tu compra, recibirás un correo electrónico inmediato con el enlace para descargar el Ebook y todos los bonos en formato PDF.'
+  },
+  {
+    question: '¿Puedo vender los amigurumis que teja?',
+    answer: '¡Por supuesto! Puedes vender todos los muñecos terminados. Solo pedimos que no revendas o distribuyas el patrón original.'
+  }
+];
+---
+
+<section class="py-24 bg-slate-50">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-5xl font-display font-extrabold text-slate-900 mb-6">Preguntas Frecuentes</h2>
+      <p class="text-lg text-slate-600">Resolvemos tus dudas antes de empezar</p>
+    </div>
+    
+    <div class="space-y-6">
+      {faqs.map((faq) => (
+        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100">
+          <h3 class="text-xl font-bold text-slate-900 mb-3 flex items-start gap-3">
+            <span class="text-primary-500 mt-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </span>
+            {faq.question}
+          </h3>
+          <p class="text-slate-600 pl-8">{faq.answer}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
