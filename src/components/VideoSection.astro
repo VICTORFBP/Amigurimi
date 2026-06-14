@@ -1,0 +1,31 @@
+---
+const videos = [
+  { id: 1, src: '/videos/video-1.webm' },
+  { id: 2, src: '/videos/video-2.webm' },
+  { id: 3, src: '/videos/video-3.webm' },
+];
+---
+
+<section class="py-24 bg-slate-900 text-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl md:text-5xl font-display font-extrabold mb-6">Mira los resultados reales</h2>
+      <p class="text-lg text-slate-300">Así de hermosos y detallados quedan los amigurumis tejiendo con nuestros patrones paso a paso.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {videos.map((video) => (
+        <div class="rounded-3xl overflow-hidden shadow-2xl border border-slate-700 aspect-[9/16] bg-slate-800 relative group cursor-pointer">
+          <video 
+            src={video.src}
+            class="w-full h-full object-cover"
+            controls
+            preload="metadata"
+          >
+            Tu navegador no soporta el elemento de video.
+          </video>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

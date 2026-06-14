@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import ProductGallery from '../components/ProductGallery.astro';
 import BonusSection from '../components/BonusSection.astro';
+import VideoSection from '../components/VideoSection.astro';
 import TestimonialsSection from '../components/TestimonialsSection.astro';
 import FaqSection from '../components/FaqSection.astro';
 import CTASection from '../components/CTASection.astro';
@@ -52,7 +53,9 @@ import CTASection from '../components/CTASection.astro';
           </div>
 
           <a 
-            href="#comprar" 
+            href="https://pay.hotmart.com/H96590288D?off=rvqi7wdv&checkoutMode=10&hotfeature=51&_hi=eyJzaWQiOiIyNjQzNjRlMzNhYzE0ODQ0OGU0NDI5ZjRhMjQ1OTI3ZCJ9.1781453168669" 
+            target="_blank"
+            rel="noopener noreferrer"
             class="inline-flex justify-center items-center px-8 py-5 text-lg font-bold text-white bg-primary-600 rounded-full hover:bg-primary-500 transition-all shadow-[0_0_30px_rgba(219,39,119,0.4)] transform hover:-translate-y-1 w-full sm:w-auto text-center"
           >
             Quiero Acceder con 70% DCTO
@@ -114,9 +117,17 @@ import CTASection from '../components/CTASection.astro';
 
     <!-- Usando componentes ya construidos -->
     <ProductGallery />
+    <VideoSection />
     <BonusSection />
     <TestimonialsSection />
     <FaqSection />
-    <CTASection id="comprar" />
+    <CTASection 
+      id="comprar" 
+      href="https://pay.hotmart.com/H96590288D?off=rvqi7wdv&checkoutMode=10&hotfeature=51&_hi=eyJzaWQiOiIyNjQzNjRlMzNhYzE0ODQ0OGU0NDI5ZjRhMjQ1OTI3ZCJ9.1781453168669"
+      target="_blank"
+      rel="noopener noreferrer"
+      buttonText="¡Sí, Quiero la Oferta a $8 USD!"
+      showPricing={true}
+    />
   </main>
 </Layout>

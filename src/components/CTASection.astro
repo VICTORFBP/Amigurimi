@@ -1,7 +1,28 @@
 ---
+interface Props {
+  href?: string;
+  buttonText?: string;
+  target?: string;
+  rel?: string;
+  title?: string;
+  subtitle?: string;
+  showPricing?: boolean;
+  id?: string;
+}
+
+const {
+  href = "/ebook-patrones-mascotas",
+  buttonText = "¡Descubre la Colección Completa!",
+  target = "_self",
+  rel = "",
+  title = "¿Lista para crear tu primer Amigurumi?",
+  subtitle = "Obtén acceso instantáneo a más de 60 patrones de mascotas y todos los bonos exclusivos.",
+  showPricing = false,
+  id
+} = Astro.props;
 ---
 
-<section class="py-24 relative overflow-hidden">
+<section id={id} class="py-24 relative overflow-hidden">
   <div class="absolute inset-0 bg-gradient-to-br from-primary-900 to-primary-800 z-0"></div>
   
   <!-- Elementos decorativos -->
@@ -14,18 +35,25 @@
         ¡SÓLO POR HOY 70% DE DESCUENTO!
       </div>
       <h2 class="text-4xl md:text-5xl font-display font-extrabold text-white mb-6">
-        ¿Lista para crear tu primer Amigurumi?
+        {title}
       </h2>
       <p class="text-xl text-primary-100 mb-6 max-w-2xl mx-auto">
-        Obtén acceso instantáneo a más de 60 patrones de mascotas y todos los bonos exclusivos por un pago único de <span class="text-white font-bold text-2xl border-b-2 border-accent">$8.00 USD</span> <span class="text-sm line-through text-primary-300 ml-2">$27.00 USD</span>.
+        {subtitle}
+        {showPricing && (
+          <Fragment>
+            por un pago único de <span class="text-white font-bold text-2xl border-b-2 border-accent">$8.00 USD</span> <span class="text-sm line-through text-primary-300 ml-2">$27.00 USD</span>.
+          </Fragment>
+        )}
       </p>
       
       <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mt-8">
         <a 
-          href="/ebook-patrones-mascotas" 
+          href={href} 
+          target={target}
+          rel={rel}
           class="w-full sm:w-auto inline-flex justify-center items-center px-10 py-5 text-xl font-bold text-primary-900 bg-accent rounded-full hover:bg-yellow-400 transition-all shadow-[0_0_40px_rgba(245,158,11,0.5)] transform hover:-translate-y-1"
         >
-          ¡Sí, Quiero la Oferta a $8 USD!
+          {buttonText}
         </a>
       </div>
       

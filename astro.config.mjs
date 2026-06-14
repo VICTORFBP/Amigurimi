@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://amigurumi-seo.pages.dev',
+  site: 'https://amigurumi-pets.pages.dev',
   vite: {
     plugins: [tailwindcss()]
   },

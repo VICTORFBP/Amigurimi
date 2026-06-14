@@ -1,60 +1,50 @@
 ---
 const testimonials = [
-  {
-    name: 'María García',
-    role: 'Principiante',
-    text: 'Nunca había tejido nada en mi vida. Las instrucciones son tan claras que mi primer perrito quedó hermoso. ¡Ya estoy haciendo el segundo!',
-    image: 'https://i.pravatar.cc/150?img=1'
-  },
-  {
-    name: 'Laura Sánchez',
-    role: 'Emprendedora',
-    text: 'Estos patrones me ayudaron a iniciar mi negocio de mascotas personalizadas. Los diseños son únicos y los clientes los aman.',
-    image: 'https://i.pravatar.cc/150?img=5'
-  },
-  {
-    name: 'Carmen Ruiz',
-    role: 'Tejedora Experta',
-    text: 'Llevo años tejiendo y estos son los mejores patrones en español que he encontrado. Las fotos paso a paso valen cada centavo.',
-    image: 'https://i.pravatar.cc/150?img=9'
-  }
+  { image: '/images/testimonio-1.webp', alt: 'Testimonio de cliente 1' },
+  { image: '/images/testimonio-2.webp', alt: 'Testimonio de cliente 2' },
+  { image: '/images/testimonio-3.webp', alt: 'Testimonio de cliente 3' },
+  { image: '/images/testimonio-4.webp', alt: 'Testimonio de cliente 4' },
+  { image: '/images/testimonio-5.webp', alt: 'Testimonio de cliente 5' },
+  { image: '/images/testimonio-6.webp', alt: 'Testimonio de cliente 6' },
+  { image: '/images/testimonio-7.webp', alt: 'Testimonio de cliente 7' },
 ];
 ---
 
-<section class="py-24 bg-white">
+<section class="py-24 bg-white overflow-hidden">
   <div class="container mx-auto px-4">
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <h2 class="text-3xl md:text-5xl font-display font-extrabold text-slate-900 mb-6">Lo que dicen nuestras tejedoras</h2>
-      <p class="text-lg text-slate-600">Miles de mujeres ya están creando sus propias mascotas y generando ingresos.</p>
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <h2 class="text-3xl md:text-5xl font-display font-extrabold text-slate-900 mb-6">Lo que dicen nuestros clientes</h2>
+      <p class="text-lg text-slate-600">Mira los resultados y la satisfacción de quienes ya tienen nuestro ebook.</p>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- CSS Carousel -->
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 -mx-4 px-4 md:px-0 md:mx-0" style="scrollbar-width: none;">
       {testimonials.map((testimonial) => (
-        <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 relative">
-          <!-- Quote Icon -->
-          <div class="text-primary-200 absolute top-6 right-6">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
-          </div>
-          
-          <div class="flex items-center gap-4 mb-6 relative z-10">
-            <img src={testimonial.image} alt={testimonial.name} class="w-16 h-16 rounded-full border-2 border-white shadow-sm" />
-            <div>
-              <h4 class="font-bold text-slate-900">{testimonial.name}</h4>
-              <span class="text-sm text-primary-600 font-medium">{testimonial.role}</span>
-            </div>
-          </div>
-          <p class="text-slate-600 italic relative z-10">"{testimonial.text}"</p>
-          
-          <!-- Stars -->
-          <div class="flex text-accent mt-6">
-            {[1, 2, 3, 4, 5].map(() => (
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            ))}
-          </div>
+        <div class="flex-none w-[80vw] sm:w-[300px] snap-center rounded-2xl overflow-hidden shadow-xl border border-slate-100 hover:scale-[1.02] transition-transform cursor-pointer bg-slate-100 aspect-[9/16] relative">
+          <img 
+            src={testimonial.image} 
+            alt={testimonial.alt} 
+            class="w-full h-full object-cover"
+            loading="lazy"
+            onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22533%22%20viewBox%3D%220%200%20300%20533%22%3E%3Crect%20fill%3D%22%23e2e8f0%22%20width%3D%22300%22%20height%3D%22533%22%2F%3E%3Ctext%20fill%3D%22%2364748b%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3ECaptura%20WhatsApp%3C%2Ftext%3E%3C%2Fsvg%3E'"
+          />
         </div>
       ))}
     </div>
+    
+    <!-- Swipe indicator -->
+    <div class="flex justify-center mt-4 md:hidden">
+      <div class="flex items-center gap-2 text-slate-400 text-sm animate-pulse">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        Desliza para ver más
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </div>
+    </div>
   </div>
 </section>
+<style>
+  /* Ocultar barra de scroll en navegadores webkit */
+  div::-webkit-scrollbar {
+    display: none;
+  }
+</style>

@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import HeroSection from '../components/HeroSection.astro';
 import ProductGallery from '../components/ProductGallery.astro';
 import BonusSection from '../components/BonusSection.astro';
+import VideoSection from '../components/VideoSection.astro';
 import TestimonialsSection from '../components/TestimonialsSection.astro';
 import FaqSection from '../components/FaqSection.astro';
 import CTASection from '../components/CTASection.astro';
@@ -53,8 +54,11 @@ import CTASection from '../components/CTASection.astro';
   </section>
 
   <ProductGallery />
-  <BonusSection />
+  <VideoSection />
   <TestimonialsSection />
   <FaqSection />
-  <CTASection />
+  <CTASection 
+    href="/ebook-patrones-mascotas" 
+    buttonText="Ver Patrones y Bonos" 
+  />
 </Layout>
