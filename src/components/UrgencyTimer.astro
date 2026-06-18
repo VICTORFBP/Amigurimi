@@ -1,0 +1,91 @@
+---
+---
+
+<div class="w-full max-w-lg mx-auto bg-slate-900/90 border border-slate-700/50 backdrop-blur-md px-6 py-4 rounded-2xl shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left z-20 relative">
+  <div class="flex items-center gap-3">
+    <div class="w-10 h-10 rounded-full bg-red-500/20 text-red-500 flex items-center justify-center animate-pulse">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
+      </svg>
+    </div>
+    <div>
+      <p class="text-xs uppercase font-extrabold text-red-500 tracking-wider">Descuento Expira Pronto</p>
+      <p class="text-sm font-semibold text-slate-200 mt-0.5">Asegura tu Ebook a precio promocional:</p>
+    </div>
+  </div>
+
+  <div class="flex items-center gap-2">
+    {/* Minutes */}
+    <div class="flex flex-col items-center">
+      <div class="bg-slate-800 border border-slate-700 w-12 h-12 rounded-xl flex items-center justify-center font-display font-extrabold text-xl text-white shadow-inner" id="timer-minutes">
+        15
+      </div>
+      <span class="text-[9px] uppercase font-bold text-slate-400 mt-1 tracking-wider">Mins</span>
+    </div>
+    
+    <span class="text-xl font-bold text-slate-500 -mt-4">:</span>
+
+    {/* Seconds */}
+    <div class="flex flex-col items-center">
+      <div class="bg-slate-800 border border-slate-700 w-12 h-12 rounded-xl flex items-center justify-center font-display font-extrabold text-xl text-accent shadow-inner animate-pulse" id="timer-seconds">
+        00
+      </div>
+      <span class="text-[9px] uppercase font-bold text-slate-400 mt-1 tracking-wider">Segs</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Countdown Timer logic that persists per visitor using localStorage
+  const MINUTES_KEY = 'amigurumi_timer_end';
+  const DURATION_MS = 15 * 60 * 1000; // 15 minutes
+
+  function startTimer() {
+    let endTimeStr = localStorage.getItem(MINUTES_KEY);
+    let endTime: number;
+
+    if (!endTimeStr) {
+      endTime = Date.now() + DURATION_MS;
+      localStorage.setItem(MINUTES_KEY, endTime.toString());
+    } else {
+      endTime = parseInt(endTimeStr, 10);
+      // If the timer already expired in the past, reset it for demo/sale persistence (15 mins loop)
+      if (Date.now() > endTime) {
+        endTime = Date.now() + DURATION_MS;
+        localStorage.setItem(MINUTES_KEY, endTime.toString());
+      }
+    }
+
+    const minutesEl = document.getElementById('timer-minutes');
+    const secondsEl = document.getElementById('timer-seconds');
+
+    function update() {
+      const remaining = endTime - Date.now();
+      
+      if (remaining <= 0) {
+        if (minutesEl) minutesEl.innerText = '00';
+        if (secondsEl) secondsEl.innerText = '00';
+        localStorage.removeItem(MINUTES_KEY); // Loop again
+        return;
+      }
+
+      const totalSeconds = Math.floor(remaining / 1000);
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+
+      if (minutesEl) minutesEl.innerText = minutes.toString().padStart(2, '0');
+      if (secondsEl) secondsEl.innerText = seconds.toString().padStart(2, '0');
+    }
+
+    update();
+    setInterval(update, 1000);
+  }
+
+  // Start the timer when document is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startTimer);
+  } else {
+    startTimer();
+  }
+</script>

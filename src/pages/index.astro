@@ -2,14 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import HeroSection from '../components/HeroSection.astro';
 import ProductGallery from '../components/ProductGallery.astro';
-import BonusSection from '../components/BonusSection.astro';
-import VideoSection from '../components/VideoSection.astro';
 import TestimonialsSection from '../components/TestimonialsSection.astro';
-import FaqSection from '../components/FaqSection.astro';
 import CTASection from '../components/CTASection.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import TrustBadges from '../components/TrustBadges.astro';
+import Newsletter from '../components/Newsletter.astro';
 ---
 
 <Layout 
@@ -18,6 +14,7 @@ import CTASection from '../components/CTASection.astro';
 >
   <HeroSection />
   
+  {/* General Crochet Value & Features Section */}
   <section id="beneficios" class="py-20 bg-white">
     <div class="container mx-auto px-4">
       <div class="text-center max-w-3xl mx-auto mb-16">
@@ -53,12 +50,101 @@ import CTASection from '../components/CTASection.astro';
     </div>
   </section>
 
-  <ProductGallery />
-  <VideoSection />
-  <TestimonialsSection />
-  <FaqSection />
+  {/* Therapeutic & Well-being Benefits Section */}
+  <section class="py-20 bg-slate-50 border-t border-slate-100">
+    <div class="container mx-auto px-4 max-w-5xl">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-4">El Poder del Crochet y los Amigurumis</h2>
+        <p class="text-slate-600">Tejer no es solo un pasatiempo; es una terapia creativa con beneficios reales.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100/50 hover:shadow-md transition-shadow">
+          <div class="w-10 h-10 bg-pink-50 text-primary-500 rounded-full flex items-center justify-center mb-4">
+            ❤️
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Reduce el Estrés</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">
+            El movimiento rítmico del ganchillo reduce la ansiedad y promueve un estado de meditación activa. ¡Un refugio diario de tranquilidad!
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100/50 hover:shadow-md transition-shadow">
+          <div class="w-10 h-10 bg-teal-50 text-secondary-500 rounded-full flex items-center justify-center mb-4">
+            🎨
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Despierta tu Creatividad</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">
+            Combina colores, texturas y formas. No hay mayor satisfacción que ver cómo unas hebras de hilo se convierten en un adorable muñeco hecho por ti.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100/50 hover:shadow-md transition-shadow">
+          <div class="w-10 h-10 bg-amber-50 text-accent rounded-full flex items-center justify-center mb-4">
+            💰
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Emprende y Emprende</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">
+            Los amigurumis personalizados tienen una altísima demanda. Es una excelente oportunidad para generar ingresos extras tejiendo desde casa.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <TrustBadges />
+
+  <ProductGallery 
+    limit={3} 
+    showFilters={false} 
+    title="Diseños Destacados de la Colección" 
+    subtitle="Una pequeña muestra de los hermosos amigurumis que aprenderás a tejer en español. Descubre nuestro catálogo completo."
+  />
+  
+  {/* Mini About Us Preview */}
+  <section class="py-20 bg-slate-900 text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(219,39,119,0.15),transparent_70%)] pointer-events-none"></div>
+    <div class="container mx-auto px-4 max-w-5xl relative z-10 flex flex-col md:flex-row items-center gap-12">
+      <div class="md:w-1/2">
+        <h2 class="text-3xl md:text-4xl font-display font-extrabold mb-6 leading-tight text-white">
+          Tejiendo Sueños en <span class="text-primary-400">Cada Punto</span>
+        </h2>
+        <p class="text-slate-300 leading-relaxed mb-6">
+          Amigurumi Pets nació de un grupo de diseñadoras apasionadas por el crochet y las mascotas. Diseñamos patrones fáciles de seguir, detallados y sin complicaciones para que disfrutes cada puntada.
+        </p>
+        <p class="text-slate-300 leading-relaxed mb-8">
+          Queremos que experimentes la magia de dar vida a un amigurumi con tus propias manos, ya sea para regalar, decorar tu hogar o vender.
+        </p>
+        <a 
+          href="/nosotros" 
+          class="inline-flex justify-center items-center px-6 py-3 font-semibold text-white bg-primary-600 rounded-full hover:bg-primary-500 transition-colors shadow-lg shadow-primary-500/20"
+        >
+          Conoce más sobre nosotras
+        </a>
+      </div>
+      <div class="md:w-1/2 flex justify-center">
+        <div class="relative w-full max-w-xs aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-slate-700/50 transform rotate-2 hover:rotate-0 transition-transform duration-500 bg-slate-800">
+          <img 
+            src="/images/hero-placeholder.webp" 
+            alt="Grupo de amigurumis tejidos" 
+            class="w-full h-full object-cover opacity-90"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <TestimonialsSection 
+    mode="text" 
+    title="Experiencias de Nuestras Alumnas"
+    subtitle="Descubre cómo nuestro Ebook de Patrones ha ayudado a cientos de personas a tejer con éxito y emprender."
+  />
+  
+  <Newsletter />
+  
   <CTASection 
     href="/ebook-patrones-mascotas" 
-    buttonText="Ver Patrones y Bonos" 
+    buttonText="Ver Todos los Patrones y Bonos" 
   />
 </Layout>
+

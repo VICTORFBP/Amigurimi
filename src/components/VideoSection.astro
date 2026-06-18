@@ -1,26 +1,52 @@
 ---
-const videos = [
+interface Props {
+  videos?: { id: number; src: string }[];
+  title?: string;
+  subtitle?: string;
+}
+
+const defaultVideos = [
   { id: 1, src: '/videos/video-1.webm' },
   { id: 2, src: '/videos/video-2.webm' },
   { id: 3, src: '/videos/video-3.webm' },
 ];
+
+const { 
+  videos = defaultVideos,
+  title = "Mira los resultados reales",
+  subtitle = "Así de hermosos y detallados quedan los amigurumis tejiendo con nuestros patrones paso a paso."
+} = Astro.props;
+
+const gridColsClass = videos.length === 2 
+  ? "grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto" 
+  : videos.length === 1
+    ? "grid grid-cols-1 gap-8 max-w-md mx-auto"
+    : "grid grid-cols-1 md:grid-cols-3 gap-8";
 ---
 
-<section class="py-24 bg-slate-900 text-white">
-  <div class="container mx-auto px-4">
+<section class="py-24 bg-slate-900 text-white relative overflow-hidden">
+  <!-- Subtle decorative glow -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="container mx-auto px-4 relative z-10">
     <div class="text-center max-w-3xl mx-auto mb-16">
-      <h2 class="text-3xl md:text-5xl font-display font-extrabold mb-6">Mira los resultados reales</h2>
-      <p class="text-lg text-slate-300">Así de hermosos y detallados quedan los amigurumis tejiendo con nuestros patrones paso a paso.</p>
+      <h2 class="text-3xl md:text-5xl font-display font-extrabold mb-6 leading-tight">
+        {title}
+      </h2>
+      <p class="text-lg text-slate-300 leading-relaxed">
+        {subtitle}
+      </p>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class={gridColsClass}>
       {videos.map((video) => (
-        <div class="rounded-3xl overflow-hidden shadow-2xl border border-slate-700 aspect-[9/16] bg-slate-800 relative group cursor-pointer">
+        <div class="rounded-3xl overflow-hidden shadow-2xl border border-slate-700/80 aspect-[9/16] bg-slate-950 relative group hover:border-primary-500/50 hover:shadow-primary-500/10 transition-all duration-300">
           <video 
             src={video.src}
             class="w-full h-full object-cover"
             controls
             preload="metadata"
+            playsinline
           >
             Tu navegador no soporta el elemento de video.
           </video>
@@ -29,3 +55,4 @@ const videos = [
     </div>
   </div>
 </section>
+

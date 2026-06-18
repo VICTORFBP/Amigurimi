@@ -6,128 +6,215 @@ import VideoSection from '../components/VideoSection.astro';
 import TestimonialsSection from '../components/TestimonialsSection.astro';
 import FaqSection from '../components/FaqSection.astro';
 import CTASection from '../components/CTASection.astro';
+import TrustBadges from '../components/TrustBadges.astro';
+import UrgencyTimer from '../components/UrgencyTimer.astro';
+
+// Structured data for SEO (JSON-LD Product Schema)
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Ebook: 60 Patrones de Mascotas Amigurumi + 3 Bonos de Regalo",
+  "image": "https://amigurumi-pets.pages.dev/images/ebook-mockup.webp",
+  "description": "Descarga instantánea de más de 60 patrones detallados en español para tejer perritos, gatitos y mascotas a crochet. Incluye soporte de dudas y garantía de 7 días.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Amigurumi Pets"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://amigurumi-pets.pages.dev/ebook-patrones-mascotas",
+    "priceCurrency": "USD",
+    "price": "8.00",
+    "priceValidUntil": "2027-12-31",
+    "itemCondition": "https://schema.org/NewCondition",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Amigurumi Pets"
+    }
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "142"
+  }
+};
 ---
 
 <Layout 
   title="Ebook: 60 Patrones de Mascotas Amigurumi" 
   description="Accede a la colección definitiva de patrones de mascotas. 60 diseños paso a paso con bonos exclusivos para iniciar tu propio emprendimiento."
 >
-  <main>
-    <!-- Hero Comercial -->
-    <section class="bg-slate-900 text-white py-20 relative overflow-hidden">
-      <!-- Decorative elements -->
-      <div class="absolute top-0 right-0 transform translate-x-1/3 -translate-y-1/3">
-        <div class="w-96 h-96 bg-primary-500 rounded-full mix-blend-screen filter blur-3xl opacity-30"></div>
+  {/* Injecting JSON-LD schema into the page for SEO */}
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+
+  <!-- Hero Comercial -->
+  <section class="bg-slate-900 text-white py-20 relative overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute top-0 right-0 transform translate-x-1/3 -translate-y-1/3">
+      <div class="w-96 h-96 bg-primary-500 rounded-full mix-blend-screen filter blur-3xl opacity-30"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center gap-12">
+      <div class="md:w-1/2">
+        <div class="inline-flex items-center px-4 py-2 rounded-full bg-red-500 text-white text-sm font-bold mb-6 animate-pulse">
+          OFERTA POR TIEMPO LIMITADO
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold leading-tight mb-6">
+          La Colección Definitiva de <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-accent">Mascotas Amigurumi</span>
+        </h1>
+        <p class="text-xl text-slate-300 mb-8 max-w-lg">
+          Descarga al instante más de 60 patrones detallados, en español y listos para tejer, vender o regalar.
+        </p>
+        
+        <ul class="space-y-4 mb-10 text-slate-200">
+          <li class="flex items-center gap-3">
+            <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <span>60 patrones paso a paso con imágenes detalladas.</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <span>Totalmente en español y apto para todo nivel.</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <span>3 Bonos de regalo (Kitty, Halloween y Cactus).</span>
+          </li>
+        </ul>
+        
+        <div class="mb-6 flex items-baseline gap-3">
+          <span class="text-4xl font-extrabold text-white">$8.00 USD</span>
+          <span class="text-xl text-slate-400 line-through">$27.00 USD</span>
+        </div>
+
+        <a 
+          href="https://pay.hotmart.com/H96590288D?off=rvqi7wdv&checkoutMode=10&hotfeature=51&_hi=eyJzaWQiOiIyNjQzNjRlMzNhYzE0ODQ0OGU0NDI5ZjRhMjQ1OTI3ZCJ9.1781453168669" 
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex justify-center items-center px-8 py-5 text-lg font-bold text-white bg-primary-600 rounded-full hover:bg-primary-50 transition-all shadow-[0_0_30px_rgba(219,39,119,0.4)] transform hover:-translate-y-1 w-full sm:w-auto text-center animate-bounce"
+        >
+          Quiero Acceder con 70% DCTO
+        </a>
       </div>
       
-      <div class="container mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center gap-12">
-        <div class="md:w-1/2">
-          <div class="inline-flex items-center px-4 py-2 rounded-full bg-red-500 text-white text-sm font-bold mb-6 animate-pulse">
-            OFERTA POR TIEMPO LIMITADO
-          </div>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold leading-tight mb-6">
-            La Colección Definitiva de <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-accent">Mascotas Amigurumi</span>
-          </h1>
-          <p class="text-xl text-slate-300 mb-8 max-w-lg">
-            Descarga al instante más de 60 patrones detallados, en español y listos para tejer, vender o regalar.
-          </p>
-          
-          <ul class="space-y-4 mb-10 text-slate-200">
-            <li class="flex items-center gap-3">
-              <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-              <span>60 patrones paso a paso con imágenes.</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-              <span>Totalmente en español y nivel principiante.</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-              <span>3 Bonos adicionales (Kitty, Halloween, Cactus).</span>
-            </li>
+      <div class="md:w-1/2 flex justify-center">
+        <!-- Placeholder Mockup del Ebook -->
+        <div class="relative w-full max-w-sm">
+          <div class="absolute inset-0 bg-gradient-to-t from-primary-500 to-accent transform rotate-6 rounded-3xl opacity-50 blur-lg"></div>
+          <img 
+            src="/images/ebook-mockup.webp" 
+            alt="Ebook de 60 Patrones Amigurumi" 
+            class="relative z-10 w-full h-auto rounded-xl shadow-2xl bg-slate-800"
+            style="aspect-ratio: 3/4;"
+            onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22400%22%20viewBox%3D%220%200%20300%20400%22%3E%3Crect%20fill%3D%22%231e293b%22%20width%3D%22300%22%20height%3D%22400%22%2F%3E%3Ctext%20fill%3D%22%2394a3b8%22%20font-family%3D%22sans-serif%22%20font-size%3D%2220%22%20dy%3D%2210.5%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EEbook%20Mockup%3C%2Ftext%3E%3C%2Fsvg%3E'"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Urgency Counter overlapping the Hero and Problem-Solution */}
+  <div class="max-w-5xl mx-auto px-4 -mt-10 mb-10 relative z-20">
+    <UrgencyTimer />
+  </div>
+
+  <!-- Comparativa o Problema/Solución -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 max-w-5xl">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-display font-bold text-slate-900 mb-4">Deja de perder tiempo buscando patrones incompletos</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-red-50 p-8 rounded-3xl border border-red-100">
+          <h3 class="text-xl font-bold text-red-700 mb-6 flex items-center gap-3">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            Patrones Gratuitos de Internet
+          </h3>
+          <ul class="space-y-4 text-slate-700">
+            <li class="flex items-start gap-3">❌ Suelen estar en otros idiomas (Ruso, Inglés).</li>
+            <li class="flex items-start gap-3">❌ Faltan pasos, no hay fotos claras del proceso.</li>
+            <li class="flex items-start gap-3">❌ Quedan deformes o con proporciones raras.</li>
+            <li class="flex items-start gap-3">❌ Pasas horas buscando en lugar de disfrutar tejiendo.</li>
           </ul>
-          
-          <div class="mb-6 flex items-baseline gap-3">
-            <span class="text-4xl font-extrabold text-white">$8.00 USD</span>
-            <span class="text-xl text-slate-400 line-through">$27.00 USD</span>
-          </div>
-
-          <a 
-            href="https://pay.hotmart.com/H96590288D?off=rvqi7wdv&checkoutMode=10&hotfeature=51&_hi=eyJzaWQiOiIyNjQzNjRlMzNhYzE0ODQ0OGU0NDI5ZjRhMjQ1OTI3ZCJ9.1781453168669" 
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex justify-center items-center px-8 py-5 text-lg font-bold text-white bg-primary-600 rounded-full hover:bg-primary-500 transition-all shadow-[0_0_30px_rgba(219,39,119,0.4)] transform hover:-translate-y-1 w-full sm:w-auto text-center"
-          >
-            Quiero Acceder con 70% DCTO
-          </a>
         </div>
         
-        <div class="md:w-1/2 flex justify-center">
-          <!-- Placeholder Mockup del Ebook -->
-          <div class="relative w-full max-w-sm">
-            <div class="absolute inset-0 bg-gradient-to-t from-primary-500 to-accent transform rotate-6 rounded-3xl opacity-50 blur-lg"></div>
-            <img 
-              src="/images/ebook-mockup.webp" 
-              alt="Ebook de 60 Patrones Amigurumi" 
-              class="relative z-10 w-full h-auto rounded-xl shadow-2xl bg-slate-800"
-              style="aspect-ratio: 3/4;"
-              onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22400%22%20viewBox%3D%220%200%20300%20400%22%3E%3Crect%20fill%3D%22%231e293b%22%20width%3D%22300%22%20height%3D%22400%22%2F%3E%3Ctext%20fill%3D%22%2394a3b8%22%20font-family%3D%22sans-serif%22%20font-size%3D%2220%22%20dy%3D%2210.5%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3EEbook%20Mockup%3C%2Ftext%3E%3C%2Fsvg%3E'"
-            />
+        <div class="bg-green-50 p-8 rounded-3xl border border-green-100">
+          <h3 class="text-xl font-bold text-green-700 mb-6 flex items-center gap-3">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            Nuestro Ebook Profesional
+          </h3>
+          <ul class="space-y-4 text-slate-700">
+            <li class="flex items-start gap-3">✅ Patrones 100% traducidos al Español.</li>
+            <li class="flex items-start gap-3">✅ Imágenes explicativas paso a paso.</li>
+            <li class="flex items-start gap-3">✅ Proporciones perfectas y acabados hermosos.</li>
+            <li class="flex items-start gap-3">✅ Formato PDF descargable, listo para imprimir.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Usando componentes ya construidos de forma dinámica -->
+  <ProductGallery 
+    title="Catálogo de Diseños del Ebook" 
+    subtitle="Explora todos los patrones incluidos. Utiliza las pestañas de categorías para encontrar tu próximo proyecto amigurumi."
+  />
+  
+  <VideoSection 
+    videos={[
+      { id: 1, src: '/videos/video-1.webm' },
+      { id: 2, src: '/videos/video-2.webm' },
+      { id: 3, src: '/videos/video-3.webm' }
+    ]}
+    title="Resultados Reales de los Patrones"
+    subtitle="Mira cómo lucen de hermosos los amigurumis tejidos siguiendo al pie de la letra nuestras guías paso a paso."
+  />
+  
+  <BonusSection />
+  
+  <!-- {/* Satisfaction Guarantee Section */}
+  <section class="py-20 bg-slate-50 border-y border-slate-100">
+    <div class="container mx-auto px-4 max-w-4xl bg-white rounded-[2.5rem] p-10 md:p-16 shadow-xl border border-slate-100/80 flex flex-col md:flex-row items-center gap-10">
+      <div class="md:w-1/3 flex justify-center">
+        {/* Guarantee Badge Seal */}
+        <div class="relative w-36 h-36 flex items-center justify-center bg-amber-500 rounded-full text-white shadow-xl animate-pulse">
+          <div class="absolute inset-0 w-full h-full rounded-full border-4 border-dashed border-white/30"></div>
+          <div class="text-center font-display z-10 flex flex-col items-center">
+            <span class="text-4xl font-black tracking-tight">7</span>
+            <span class="text-[9px] uppercase font-bold tracking-widest -mt-1">Días de</span>
+            <span class="text-xs font-black uppercase bg-white text-amber-700 px-3 py-0.5 rounded-full mt-1.5 shadow-sm">Garantía</span>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Comparativa o Problema/Solución -->
-    <section class="py-20 bg-white">
-      <div class="container mx-auto px-4 max-w-5xl">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl font-display font-bold text-slate-900 mb-4">Deja de perder tiempo buscando patrones incompletos</h2>
-        </div>
-        
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="bg-red-50 p-8 rounded-3xl border border-red-100">
-            <h3 class="text-xl font-bold text-red-700 mb-6 flex items-center gap-3">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-              Patrones Gratuitos de Internet
-            </h3>
-            <ul class="space-y-4 text-slate-700">
-              <li class="flex items-start gap-3">❌ Estás en otros idiomas (Ruso, Inglés).</li>
-              <li class="flex items-start gap-3">❌ Faltan pasos, no hay fotos del proceso.</li>
-              <li class="flex items-start gap-3">❌ Quedan deformes o asimétricos.</li>
-              <li class="flex items-start gap-3">❌ Pasas horas buscando en lugar de tejer.</li>
-            </ul>
-          </div>
-          
-          <div class="bg-green-50 p-8 rounded-3xl border border-green-100">
-            <h3 class="text-xl font-bold text-green-700 mb-6 flex items-center gap-3">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-              Nuestro Ebook Profesional
-            </h3>
-            <ul class="space-y-4 text-slate-700">
-              <li class="flex items-start gap-3">✅ 100% traducidos al Español.</li>
-              <li class="flex items-start gap-3">✅ Imágenes paso a paso de cada detalle.</li>
-              <li class="flex items-start gap-3">✅ Proporciones perfectas y adorables.</li>
-              <li class="flex items-start gap-3">✅ Listo para imprimir o ver en tu celular.</li>
-            </ul>
-          </div>
-        </div>
+      <div class="md:w-2/3 text-left">
+        <h2 class="text-2xl md:text-3xl font-display font-extrabold text-slate-900 mb-4">Garantía de Satisfacción Incondicional</h2>
+        <p class="text-slate-600 leading-relaxed mb-4 font-medium">
+          Queremos que tejas con absoluta tranquilidad. Por eso, tu compra está respaldada por una garantía de devolución del 100% de tu dinero durante 7 días.
+        </p>
+        <p class="text-slate-500 text-sm leading-relaxed">
+          Prueba los patrones y explora el contenido. Si sientes que este material no cumple con tus expectativas o no es lo que esperabas, solo envíanos un correo y te reembolsaremos la totalidad de tu pago inmediatamente, sin preguntas ni procesos complicados.
+        </p>
       </div>
-    </section>
-
-    <!-- Usando componentes ya construidos -->
-    <ProductGallery />
-    <VideoSection />
-    <BonusSection />
-    <TestimonialsSection />
-    <FaqSection />
-    <CTASection 
-      id="comprar" 
-      href="https://pay.hotmart.com/H96590288D?off=rvqi7wdv&checkoutMode=10&hotfeature=51&_hi=eyJzaWQiOiIyNjQzNjRlMzNhYzE0ODQ0OGU0NDI5ZjRhMjQ1OTI3ZCJ9.1781453168669"
-      target="_blank"
-      rel="noopener noreferrer"
-      buttonText="¡Sí, Quiero la Oferta a $8 USD!"
-      showPricing={true}
-    />
-  </main>
+    </div>
+  </section> -->
+  
+  <!-- <TrustBadges /> -->
+  
+  <TestimonialsSection 
+    mode="screenshots" 
+    title="Prueba Social de Nuestras Alumnas"
+    subtitle="Lo que dicen quienes ya han descargado el ebook y tejido a sus mascotas amigurumi favoritas."
+  />
+  
+  <FaqSection />
+  
+  <CTASection 
+    id="comprar" 
+    href="https://pay.hotmart.com/H96590288D?off=rvqi7wdv&checkoutMode=10&hotfeature=51&_hi=eyJzaWQiOiIyNjQzNjRlMzNhYzE0ODQ0OGU0NDI5ZjRhMjQ1OTI3ZCJ9.1781453168669"
+    target="_blank"
+    rel="noopener noreferrer"
+    buttonText="¡Sí, Quiero el Ebook con 70% DCTO!"
+    showPricing={true}
+  />
 </Layout>
