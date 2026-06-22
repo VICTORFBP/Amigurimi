@@ -1,39 +1,31 @@
 export const prerender = false;
-import nodemailer from "nodemailer";
 import type { APIRoute } from "astro";
 
-const apiKey = import.meta.env.RESEND_API_KEY || process.env.RESEND_API_KEY;
+const apiKey = import.meta.env.RESEND_API_KEY;
 
 export const POST: APIRoute = async ({ request }) => {
   try {
     if (!apiKey) {
-      console.error("No se encontró RESEND_API_KEY. ¿Reiniciaste el servidor?");
-      return new Response(JSON.stringify({ error: "Falta configurar la API Key en el servidor. Por favor, reinicia tu servidor de desarrollo (npm run dev)." }), { status: 500 });
+      return new Response(JSON.stringify({ error: "Falta RESEND_API_KEY" }), { status: 500 });
     }
 
-    const transporter = nodemailer.createTransport({
-      host: "smtp.resend.com",
-      port: 465,
-      secure: true,
-      auth: {
-        user: "resend",
-        pass: apiKey,
-      },
-    });
     const { email, name } = await request.json();
 
     if (!email || !name) {
       return new Response(JSON.stringify({ error: "Faltan datos" }), { status: 400 });
     }
 
-    // Usa el dominio verificado
-    const senderEmail = "Amigurumi Pets <amigurumipets@vicdev.org>";
-
-    const info = await transporter.sendMail({
-      from: senderEmail,
-      to: email,
-      subject: "¡Tus 4 Patrones Gratis de Amigurumi están aquí! 🧶",
-      html: `
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "Amigurumi Pets <amigurumipets@vicdev.org>",
+        to: [email],
+        subject: "¡Tus 4 Patrones Gratis de Amigurumi están aquí! 🧶",
+        html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333; background-color: #fff;">
           <div style="background-color: #d81b60; padding: 30px 20px; text-align: center; border-radius: 12px 12px 0 0;">
             <h1 style="color: #ffffff; margin: 0; font-size: 24px;">¡Hola ${name}! 👋</h1>
@@ -101,17 +93,23 @@ export const POST: APIRoute = async ({ request }) => {
           </div>
         </div>
       `,
+      }),
     });
 
-    return new Response(JSON.stringify({ success: true, info }), {
+    if (!res.ok) {
+      const errData = await res.json();
+      return new Response(JSON.stringify({ error: errData }), { status: 500 });
+    }
+
+    return new Response(JSON.stringify({ success: true }), {
       status: 200,
-      headers: { "Content-Type": "application/json" }
+      headers: { "Content-Type": "application/json" },
     });
+
   } catch (error: any) {
-    console.error("Error SMTP:", error);
-    return new Response(JSON.stringify({ error: error.message || "Error al enviar correo SMTP" }), {
+    return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
-      headers: { "Content-Type": "application/json" }
+      headers: { "Content-Type": "application/json" },
     });
   }
 };
