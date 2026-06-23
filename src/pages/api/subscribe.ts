@@ -1,15 +1,26 @@
 export const prerender = false;
 import type { APIRoute } from "astro";
 
-const apiKey = import.meta.env.RESEND_API_KEY;
-
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async (context) => {
   try {
+    console.log("ENV:", import.meta.env);
+
+    const apiKey = import.meta.env.RESEND_API_KEY;
+
     if (!apiKey) {
-      return new Response(JSON.stringify({ error: "Falta RESEND_API_KEY" }), { status: 500 });
+      return new Response(
+        JSON.stringify({
+          error: "Falta RESEND_API_KEY",
+          envKeys: Object.keys(import.meta.env),
+        }),
+        {
+          status: 500,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
     }
 
-    const { email, name } = await request.json();
+    const { email, name } = await context.request.json();
 
     if (!email || !name) {
       return new Response(JSON.stringify({ error: "Faltan datos" }), { status: 400 });
