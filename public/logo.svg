@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 100">
+  <defs>
+    <linearGradient id="yarnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f472b6" />
+      <stop offset="100%" stop-color="#db2777" />
+    </linearGradient>
+  </defs>
+  <!-- Yarn Ball Icon -->
+  <g transform="translate(10, 5) scale(0.9)">
+    <!-- Ears -->
+    <path d="M 25 40 L 15 15 L 45 25 Z" fill="url(#yarnGrad)" />
+    <path d="M 75 40 L 85 15 L 55 25 Z" fill="url(#yarnGrad)" />
+    <!-- Inner Ears -->
+    <path d="M 25 32 L 19 20 L 38 25 Z" fill="#fbcfe8" />
+    <path d="M 75 32 L 81 20 L 62 25 Z" fill="#fbcfe8" />
+    <!-- Ball of yarn -->
+    <circle cx="50" cy="55" r="35" fill="url(#yarnGrad)" />
+    <!-- Yarn texture lines -->
+    <path d="M 25 40 Q 50 65 75 40" stroke="#be185d" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.6"/>
+    <path d="M 18 55 Q 50 85 82 55" stroke="#be185d" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.6"/>
+    <path d="M 35 23 Q 45 55 55 23" stroke="#be185d" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.6"/>
+    <path d="M 25 70 Q 50 45 75 70" stroke="#be185d" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.6"/>
+    <path d="M 40 88 Q 50 50 60 88" stroke="#be185d" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.6"/>
+  </g>
+  <!-- Text -->
+  <text x="105" y="66" font-family="'Outfit', sans-serif" font-weight="800" font-size="46" fill="#1e293b" letter-spacing="-1">amigurumi</text>
+</svg>
